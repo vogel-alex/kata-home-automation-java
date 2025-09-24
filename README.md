@@ -18,5 +18,3 @@ Implement an additional component:
 * An automatic vacuum cleaner. It should start the cleaning once everything else is turned off.
 
 Evaluate whether or not your refactoring made life easier for you, or not.
-
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/modernSE/kata-home-automation-java)
