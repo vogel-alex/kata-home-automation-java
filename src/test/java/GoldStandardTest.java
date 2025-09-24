@@ -12,7 +12,38 @@ public class GoldStandardTest {
 
     @Test
     public void testGoldStandard() {
-        String goldStandard = "BIG OLD SWITCH PRESSED.\n\n\nClosing blinds.\nSetting temperature to 20\nDimming to 50%\nLoading Spotify....\nGet up, stand up... Stand up for your rights!\nTurning on CoffeeMaster3000(c)\nBRRRRRRRRRRRRRRRRRRRRRRR SHHHHHHHHHHHHHHHHHHHHHHHHHHHH Drip Drip Drip...\nUsing Decaf Beans.\n         |\n \\     _____     /\n     /       \\\n    (         )\n-   ( ))))))) )   -\n     \\ \\   / /\n      \\|___|/\n  /    |___|    \\\n       |___| prs\n       |___|\n\nOpening blinds. Avert your eyes.\nTurning off airconditioning.\nLights will go out in 10 seconds.\nPlay will continue from 'I didn't shoot the deputy.'\nStereo Shutting down.\nRunning MasterClean3000(c) on CoffeeMaster3000\nShutting down CoffeeMaster3000\nCoffeeMaster3000 standing by.";
+        String goldStandard = """
+        BIG OLD SWITCH PRESSED.
+        
+        
+        Closing blinds.
+        Setting temperature to 20
+        Dimming to 50%
+        Loading Spotify....
+        Get up, stand up... Stand up for your rights!
+        Turning on CoffeeMaster3000(c)
+        BRRRRRRRRRRRRRRRRRRRRRRR SHHHHHHHHHHHHHHHHHHHHHHHHHHHH Drip Drip Drip...
+        Using Decaf Beans.
+                 |
+         \\     _____     /
+             /       \\
+            (         )
+        -   ( ))))))) )   -
+             \\ \\   / /
+              \\|___|/
+          /    |___|    \\
+               |___| prs
+               |___|
+        
+        Opening blinds. Avert your eyes.
+        Turning off airconditioning.
+        Lights will go out in 10 seconds.
+        Play will continue from 'I didn't shoot the deputy.'
+        Stereo Shutting down.
+        Running MasterClean3000(c) on CoffeeMaster3000
+        Shutting down CoffeeMaster3000
+        CoffeeMaster3000 standing by.
+        """;
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream out = new PrintStream(baos);
