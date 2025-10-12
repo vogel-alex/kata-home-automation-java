@@ -1,7 +1,5 @@
 package home.automation;
 
-import java.util.Set;
-
 /**
  * Created by Ferdinand.Szekeresch on 20.04.2017.
  */
@@ -23,7 +21,7 @@ public class Main {
 		s.addDevice(coffeeMaker);
 		s.press();
 
-		
+		s.press();
 	}
 
 }

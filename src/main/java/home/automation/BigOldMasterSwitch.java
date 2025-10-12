@@ -1,7 +1,6 @@
 package home.automation;
 
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -9,7 +8,7 @@ import java.util.Set;
  */
 public class BigOldMasterSwitch implements ISwitch {
 	
-	Set<IAutomationDevice> devices = new HashSet<>();
+	Set<IAutomationDevice> devices = new LinkedHashSet<IAutomationDevice>();
 	
 	/*
 	 * Factory für die Geräte
@@ -24,9 +23,8 @@ public class BigOldMasterSwitch implements ISwitch {
 		if (!isOn) {
 			System.out.println("BIG OLD SWITCH PRESSED.\n\n");
 			
-			for (Iterator iterator = devices.iterator(); iterator.hasNext();) {
-				IAutomationDevice iAutomationDevice = (IAutomationDevice) iterator.next();
-				iAutomationDevice.turnOn();
+			for (var device: devices) {
+				device.turnOn();
 			}
 			
 			isOn = true;
@@ -43,9 +41,8 @@ public class BigOldMasterSwitch implements ISwitch {
 			b.append("       |___|\n");
 			System.out.println(b.toString());
 		} else if (isOn) {
-			for (Iterator iterator = devices.iterator(); iterator.hasNext();) {
-				IAutomationDevice iAutomationDevice = (IAutomationDevice) iterator.next();
-				iAutomationDevice.turnOff();
+			for (var device: devices) {
+				device.turnOff();
 			}
 		}
 	}
