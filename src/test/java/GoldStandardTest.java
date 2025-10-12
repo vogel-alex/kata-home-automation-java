@@ -1,9 +1,11 @@
 import home.automation.Main;
-import org.junit.Assert;
-import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Created by Ferdinand.Szekeresch on 09.07.2017.
@@ -49,6 +51,6 @@ public class GoldStandardTest {
         PrintStream out = new PrintStream(baos);
         System.setOut(out);
         Main.main(new String[]{});
-        Assert.assertEquals(goldStandard.trim(), baos.toString().trim().replace("\r", ""));
+        assertEquals(goldStandard.trim(), baos.toString().trim().replace("\r", ""));
     }
 }
