@@ -1,5 +1,12 @@
 package home.automation;
 
+import java.util.*;
+
+import home.automation.appliances.AirConditioning;
+import home.automation.appliances.Lights;
+import home.automation.appliances.Shutter;
+import home.automation.appliances.Stereo;
+
 /**
  * Created by Ferdinand.Szekeresch on 20.04.2017.
  */
@@ -7,47 +14,41 @@ public class BigOldMasterSwitch {
 
 	private boolean isOn = false;
 
-	private Shutter shutter = new Shutter();
+	private SwitchOnManager switchOnManager;
+	private SwitchOffManager switchOffManager;
 
-	private AirConditioning airConditioning = new AirConditioning();
+	public static interface Applience<T> {
+		void applyChange(T payload);
 
-	private Lights lights = new Lights();
+		void off();
+	}
 
-	private Stereo stereo = new Stereo();
+	public static interface State {
+		boolean turnedOn();
 
-	private CoffeeMaker coffeeMaker = new CoffeeMaker();
+	}
 
 	public void press() {
+
+		/*
+		ApplianceManager<CoffeeMaker> coffeOnManager = new ApplianceManager<CoffeeMaker>(coffeeMaker, List.of(maker -> {
+			maker.brew(CoffeeMaker.Type.DECAF);
+		}));
+
+		ApplianceManager<CoffeeMaker> coffeOffManager = new ApplianceManager<CoffeeMaker>(coffeeMaker,
+				List.of(maker -> {
+					if (maker.isOn()) {
+						maker.doClean();
+						maker.shutDown();
+					}
+				}));
+				*/
+
 		if (!isOn) {
-			System.out.println("BIG OLD SWITCH PRESSED.\n\n");
-			shutter.close();
-			airConditioning.setTemperatureInCelsius(20);
-			lights.dimPercent(50);
-			stereo.play("Bob Marley");
-			coffeeMaker.brew(CoffeeMaker.Type.DECAF);
-			isOn = true;
-			StringBuffer b = new StringBuffer();
-			b.append("         |\n");
-			b.append(" \\     _____     /\n");
-			b.append("     /       \\\n");
-			b.append("    (         )\n");
-			b.append("-   ( ))))))) )   -\n");
-			b.append("     \\ \\   / /\n");
-			b.append("      \\|___|/\n");
-			b.append("  /    |___|    \\\n");
-			b.append("       |___| prs\n");
-			b.append("       |___|\n");
-			System.out.println(b.toString());
+			switchOnManager.doStuff();
 		} else if (isOn) {
-			shutter.open();
-			airConditioning.turnOff();
-			lights.off();
-			stereo.rememberPosition();
-			stereo.off();
-			if (coffeeMaker.isOn()) {
-				coffeeMaker.doClean();
-				coffeeMaker.shutDown();
-			}
+			switchOffManager.doStuff();
 		}
 	}
+
 }

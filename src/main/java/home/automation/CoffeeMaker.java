@@ -1,9 +1,11 @@
 package home.automation;
 
+import home.automation.appliances.Lights;
+
 /**
  * Created by Ferdinand.Szekeresch on 20.04.2017.
  */
-public class CoffeeMaker {
+public class CoffeeMaker implements IAppliance {
 
 	private boolean on;
 
@@ -47,6 +49,22 @@ public class CoffeeMaker {
 
 	public enum Type {
 		DECAF, ESPRESSO, LATTE
+	}
+
+			public record LightsDim(int percent) implements Payload<Lights> {
+
+		@Override
+		public void apply(Lights light) {
+			light.dimPercent(percent);;
+		}
+	}
+
+	public record LightsOff() implements Payload<Lights> {
+
+		@Override
+		public void apply(Lights light) {
+			light.off();
+		}
 	}
 
 }
