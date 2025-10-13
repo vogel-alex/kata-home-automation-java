@@ -3,7 +3,7 @@ package home.automation;
 /**
  * Created by Ferdinand.Szekeresch on 20.04.2017.
  */
-public class CoffeeMaker {
+public class CoffeeMaker implements Device {
 
 	private boolean on;
 
@@ -47,6 +47,19 @@ public class CoffeeMaker {
 
 	public enum Type {
 		DECAF, ESPRESSO, LATTE
+	}
+
+	@Override
+	public void onActivatedMasterSwitch() {
+		brew(CoffeeMaker.Type.DECAF);
+	}
+
+	@Override
+	public void onDeactivatedMasterSwitch() {
+		if (isOn()) {
+				doClean();
+				shutDown();
+			}
 	}
 
 }

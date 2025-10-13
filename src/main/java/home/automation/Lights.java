@@ -3,7 +3,7 @@ package home.automation;
 /**
  * Created by Ferdinand.Szekeresch on 20.04.2017.
  */
-public class Lights {
+public class Lights implements Device{
 
 	/**
 	 * NOTE: starting from the next Software update, dimPercent will not work if the turnOn() method has not been called
@@ -15,5 +15,15 @@ public class Lights {
 
 	public void off() {
 		System.out.println("Lights will go out in 10 seconds.");
+	}
+
+	@Override
+	public void onActivatedMasterSwitch() {
+		dimPercent(50);
+	}
+
+	@Override
+	public void onDeactivatedMasterSwitch() {
+		off();
 	}
 }

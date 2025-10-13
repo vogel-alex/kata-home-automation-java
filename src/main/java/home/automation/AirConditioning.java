@@ -3,7 +3,7 @@ package home.automation;
 /**
  * Created by Ferdinand.Szekeresch on 20.04.2017.
  */
-public class AirConditioning {
+public class AirConditioning implements Device {
 
 	private int temperatureInCelsius;
 
@@ -14,5 +14,15 @@ public class AirConditioning {
 
 	public void turnOff() {
 		System.out.println("Turning off airconditioning.");
+	}
+
+	@Override
+	public void onActivatedMasterSwitch() {
+		setTemperatureInCelsius(20);
+	}
+
+	@Override
+	public void onDeactivatedMasterSwitch() {
+		turnOff();
 	}
 }
